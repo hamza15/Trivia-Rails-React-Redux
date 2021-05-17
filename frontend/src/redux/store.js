@@ -3,7 +3,7 @@ import categoryReducer from "./reducers/categoryReducer";
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
-    category: categoryReducer,
+    categories: categoryReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

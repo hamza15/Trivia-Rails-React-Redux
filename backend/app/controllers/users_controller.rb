@@ -4,15 +4,30 @@ class UsersController < ApplicationController
         render json: UserSerializer.new(users)
     end 
 
-    # def create 
-    #     user = User.create(user_params)
-
-    #     if user.save
-    #         render json: UserSerializer.new(user), status: :accepted
-    #     else
-    #         render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
-    #     end 
-    # end 
+    def create
+        if User.find_by(username: params[:user][:username])
+            user = User.find_by(username: params[:user][:username])
+            status = {status: "existing"}
+            content = {
+                user_info: user,
+                login_status: status
+            }
+            render json: { :data => content}
+        else 
+            user = User.new(user_params)
+            status = {status: "new"}
+            content = {
+                user_info: user,
+                login_status: status
+            }
+            if user.save
+                # render json: UserSerializer.new(user)
+                render json: { :data => content}
+            else
+                render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+            end
+        end 
+    end 
 
     def show 
         user = User.find_by(id: params[:id])
