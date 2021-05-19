@@ -9,6 +9,15 @@ export const createUser = (newUser) => {
             body: JSON.stringify({ user: newUser}),
         })
         .then(res => res.json())
-        .then(data => console.log(data.data.user_info))
+        .then(data => dispatch({type: 'CREATE_USER_SUCCESS', payload: data})
+            // {
+            //     if (data.data.login_status.status === "existing") {
+            //         console.log("Existing customer found")
+            //     }
+            //     else {
+            //         console.log("New customer")
+            //     }
+            // }
+        )
     }
 }

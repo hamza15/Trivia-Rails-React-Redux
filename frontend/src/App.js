@@ -2,7 +2,9 @@ import './App.css';
 import {Switch, Route} from 'react-router-dom'
 import Home from "./components/Home"
 import Categories from "./components/Categories"
-import UserForm from "./components/UserForm"
+import UserHome from "./components/UserHome"
+import Game from "./components/Game"
+import CategoryListItem from "./components/CategoryListItem"
 
 
 function App() {
@@ -10,8 +12,10 @@ function App() {
     <div>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route path='/user/new' component={UserForm} />
         <Route path='/categories' component={Categories} />
+        <Route exact path='/user/home' component={UserHome} />
+        <Route exact path='/game' component={Game} />
+        <Route exact path='/category/:id' component={CategoryListItem} />
       </Switch>
     </div>
   );

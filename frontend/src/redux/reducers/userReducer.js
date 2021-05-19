@@ -1,6 +1,6 @@
-const userReducer =  (state = [], action) => {
+const userReducer = (state = [], action) => {
     switch (action.type) {
-        case 'FETCH_CATEGORIES':
+        case 'CREATE_USER_SUCCESS':
             return action.payload;
         default:
             return state;
