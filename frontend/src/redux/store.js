@@ -3,6 +3,7 @@ import categoryReducer from "./reducers/categoryReducer";
 import userReducer from "./reducers/userReducer";
 import selectedCatReducer from "./reducers/selectedCatReducer";
 import questionsReducer from "./reducers/questionsReducer";
+import selectedQuesReducer from "./reducers/selQuesReducer"
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     selected_category: selectedCatReducer,
     questions: questionsReducer,
+    selected_questions: selectedQuesReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

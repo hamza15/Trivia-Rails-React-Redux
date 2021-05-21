@@ -1,7 +1,7 @@
 class Api
 
     def self.animals
-        url = "https://opentdb.com/api.php?amount=50&category=27&type=multiple"
+        url = "https://opentdb.com/api.php?amount=10&category=27&type=multiple"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri) 
         @@data = JSON.parse(response.body)["results"]
@@ -11,7 +11,7 @@ class Api
 
     #! CELEBRITIES 48
     def self.celebrities
-        url = "https://opentdb.com/api.php?amount=48&category=26&type=multiple"
+        url = "https://opentdb.com/api.php?amount=10&category=26&type=multiple"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)   
         @@data = JSON.parse(response.body)["results"]
@@ -21,7 +21,7 @@ class Api
 
     #! SPORTS 50
     def self.sports
-        url = "https://opentdb.com/api.php?amount=50&category=21&type=multiple"
+        url = "https://opentdb.com/api.php?amount=10&category=21&type=multiple"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
         @@data = JSON.parse(response.body)["results"]
