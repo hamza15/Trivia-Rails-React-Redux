@@ -14,23 +14,6 @@ class Categories extends Component {
     handleClick = (event) => {
         event.preventDefault();
         this.props.selectCategory(event.target.innerHTML);
-
-        // const cat = this.props.selected_category;
-        // function cleanup (input) {
-            
-        // if (input.name === cat) {
-        //     return input.questions
-        //     }
-        // }
-        // console.log(this.props.category_questions)
-        // console.log(this.props.selected_category)
-        // let quest_list = this.props.category_questions.map(a => cleanup(a));
-        // quest_list = quest_list.filter(function( element ) {
-        // return element !== undefined;
-        // });
-        
-        // this.props.selectedQuestions(quest_list);
-
         const your_category = event.target.innerHTML.toLowerCase();
         this.props.history.push(`/category/${your_category}`)
         // <Link to={`/category/${this.props.selected_category}`}></Link>
