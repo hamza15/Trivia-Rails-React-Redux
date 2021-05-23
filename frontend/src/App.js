@@ -5,6 +5,7 @@ import Categories from "./components/Categories"
 import UserHome from "./components/UserHome"
 import Game from "./components/Game"
 import CategoryListItem from "./components/CategoryListItem"
+import Questionaire from "./components/Questionaire"
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/user/home' component={UserHome} />
         <Route exact path='/game' component={Game} />
         <Route exact path='/category/:id' component={CategoryListItem} />
+        <Route exact path='/questionaire' component={Questionaire} />
       </Switch>
     </div>
   );

@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
+import Questionaire from "./Questionaire"
 import { getQuestions } from "../redux/actions/getQuestions"
 import { selectedQuestions } from "../redux/actions/selectedQuestions"
 import { connect } from "react-redux";
 
 class CategoryListItem extends Component {
+  state = {
+    index: 0,
+    score: 0,
+    gameEnded: false
+  }
 
   componentWillMount() {
     fetch(`http://localhost:3001/categories/${this.props.selected_category}`)
@@ -14,29 +20,48 @@ class CategoryListItem extends Component {
           );
   }
 
+  handleAnswer = (answer) => {
+    
+    const newIndex = this.state.index + 1
+    this.setState({
+      index: newIndex
+    })
+
+    let quest_list = this.props.selected_questions
+    if (answer === quest_list[this.state.index].answer) {
+      let newScore = this.state.score + 1
+      this.setState({
+        score: newScore
+      })
+    }
+
+    if(newIndex >= quest_list.length) {
+      this.setState({
+        gameEnded: true
+      })
+    }
+    
+    console.log(this.state.score)
+  };
+  
+
   render() {
 
-    return this.props.selected_questions.length > 0 ? (
-      <div>
-          <p>{this.props.selected_category}</p>
-          <div className='container'>
-            <div className="bg-white text-purple-800 p-10 rounded-lg shadow-md">
-              <h2 className="text-2xl" 
-              dangerouslySetInnerHTML={{ __html: this.props.selected_questions[0].question}}/>
+    const quest_list = this.props.selected_questions
+    console.log(quest_list)
+    return  this.state.gameEnded ? (
+      <h1 className='text-3xl text-white font-bold'> Your score was {this.state.score} </h1>
+    ) : quest_list.length > 0 ? (
+        <div>
+            <p>{this.props.selected_category}</p>
+            <div className='container'>
+              <Questionaire data={quest_list[this.state.index]} handleAnswer={this.handleAnswer}/>
 
             </div>
-          
-          <div className='grid grid-cols-2 gap-6 mt-6'>
-            <button className="bg-white p-4 text-purple-800 font-semibold rounded shadow">{this.props.selected_questions[0].choice1}</button>
-            <button className="bg-white p-4 text-purple-800 font-semibold rounded shadow">{this.props.selected_questions[0].choice2}</button>
-            <button className="bg-white p-4 text-purple-800 font-semibold rounded shadow">{this.props.selected_questions[0].choice3}</button>
-            <button className="bg-white p-4 text-purple-800 font-semibold rounded shadow">{this.props.selected_questions[0].choice4}</button>
-          </div>
         </div>
-      </div>
-    ) : (
-      <h2>Loading ....</h2>
-    )
+      ) : (
+        <h2>Loading ....</h2>
+      )
   }
 }
 
