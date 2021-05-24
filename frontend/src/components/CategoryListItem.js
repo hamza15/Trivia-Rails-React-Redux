@@ -8,7 +8,7 @@ class CategoryListItem extends Component {
   state = {
     index: 0,
     score: 0,
-    gameEnded: false
+    showAnswers: false
   }
 
   componentWillMount() {
@@ -22,36 +22,47 @@ class CategoryListItem extends Component {
 
   handleAnswer = (answer) => {
     
+    
+    if(!this.state.showAnswers) {
+      let quest_list = this.props.selected_questions
+      if (answer === quest_list[this.state.index].answer) {
+        let newScore = this.state.score + 1
+        this.setState({
+          score: newScore
+        })
+      }
+    }
+    
+    this.setState({
+      showAnswers: true
+    })
+
+    
+  };
+
+  handleNextQuestion = () => {
+
+    this.setState({
+      showAnswers: false
+    })
+
     const newIndex = this.state.index + 1
     this.setState({
       index: newIndex
     })
-
-    let quest_list = this.props.selected_questions
-    if (answer === quest_list[this.state.index].answer) {
-      let newScore = this.state.score + 1
-      this.setState({
-        score: newScore
-      })
-    }
-
-    if(newIndex >= quest_list.length) {
-      this.setState({
-        gameEnded: true
-      })
-    }
-  };
+    
+  }
   
 
   render() {
     const quest_list = this.props.selected_questions
-    return  this.state.gameEnded ? (
+    return  this.state.index >= quest_list.length ? (
       <h1 className='text-3xl text-white font-bold'> Your score was {this.state.score} </h1>
     ) : quest_list.length > 0 ? (
         <div>
             <p>{this.props.selected_category}</p>
             <div className='container'>
-              <Questionaire data={quest_list[this.state.index]} handleAnswer={this.handleAnswer}/>
+              <Questionaire data={quest_list[this.state.index]} handleNextQuestion={this.handleNextQuestion} handleAnswer={this.handleAnswer} showAnswers={this.state.showAnswers} />
 
             </div>
         </div>
