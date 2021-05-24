@@ -5,10 +5,6 @@ const Questionaire = ({
     data: { question, answer, 
     choice1, choice2, choice3, choice4},
 }) => {
-
-    // const shuffledAnswer = [correct_answer, ...incorrect_answers].sort(
-    //     () => Math.random() - 0.5
-    // )
     const shuffledAnswers = [choice1, choice2, choice3, choice4]
 
     return (
@@ -22,17 +18,12 @@ const Questionaire = ({
           <div className='grid grid-cols-2 gap-6 mt-6'>
             {shuffledAnswers.map((selected_answer) => (
                 <button
-                    className={`${
-                        answer === selected_answer
-                        ? 'bg-purple-300' :
-                        'bg-white'
-                    } p-4 text-purple-800
-                    font-semibold rounded shadown`}
+                    className='
+                    bg-white p-4 text-purple-800
+                    font-semibold rounded shadown'
                     onClick={() => 
-                        handleAnswer(selected_answer)}>
-                    {selected_answer}  
-                </button>
-                
+                        handleAnswer(selected_answer)}
+                    dangerouslySetInnerHTML={{ __html: selected_answer}}/>  
             ))}
                 
           </div>

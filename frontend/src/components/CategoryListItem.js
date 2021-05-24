@@ -40,15 +40,11 @@ class CategoryListItem extends Component {
         gameEnded: true
       })
     }
-    
-    console.log(this.state.score)
   };
   
 
   render() {
-
     const quest_list = this.props.selected_questions
-    console.log(quest_list)
     return  this.state.gameEnded ? (
       <h1 className='text-3xl text-white font-bold'> Your score was {this.state.score} </h1>
     ) : quest_list.length > 0 ? (

@@ -21,7 +21,7 @@ class Home extends Component {
     render () {
         return (
             <div>
-                <h1>Welcome to Trivia!</h1>
+                <h1 className='text-3xl text-white font-bold'>Welcome to Trivia!</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username: </label>
                     <input
