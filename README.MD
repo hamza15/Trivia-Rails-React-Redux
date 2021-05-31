@@ -36,7 +36,7 @@ $ rails s
 
 <strong>Front-End</strong>
 
-```react
+```javascript
 $ yarn add react-router-dom
 $ yarn add redux-thunk
 $ yarn add react
