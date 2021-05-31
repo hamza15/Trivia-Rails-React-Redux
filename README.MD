@@ -37,8 +37,8 @@ $ rails s
 <strong>Front-End</strong>
 
 ```react
-yarn add react-router-dom
-yarn add redux-thunk
-yarn add react
-yarn start
+$ yarn add react-router-dom
+$ yarn add redux-thunk
+$ yarn add react
+$ yarn start
 ```
