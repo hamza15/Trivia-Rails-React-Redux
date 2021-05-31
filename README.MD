@@ -6,7 +6,7 @@
 ## Features
 
 <div align="center">
-  <img src="images/Trivia.png">
+  <img src="images/Trivia.gif">
 </div>
 
 
