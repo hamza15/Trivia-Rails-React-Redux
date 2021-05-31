@@ -22,15 +22,19 @@ class Home extends Component {
         return (
             <div>
                 <h1 className='text-3xl text-white font-bold'>Welcome to Trivia!</h1>
-                <form onSubmit={this.handleSubmit}>
+                <form 
+                className='grid grid-cols-1 gap-2 mt-6'
+                onSubmit={this.handleSubmit}>
                     <label>Username: </label>
                     <input
+                    className={'text-black'}
                     type="text"
                     name="username"
                     onChange={this.handleChange}
                     value={this.state.username}
+                    required
                     />
-                    <button type="submit">Log In</button>
+                    <button className={'bg-purple-700 text-white p-4 font-semibold rounded shadown mt-6'} type="submit">Log In</button>
                 </form>
             </div>
         )

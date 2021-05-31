@@ -22,13 +22,16 @@ class Categories extends Component {
     render() {
         return (
             <div>
-                <h1>Categories List</h1>
+                <h1 className='text-3xl text-white font-bold'>Categories List</h1>
                 {this.props.categories.map(a => 
+                <div className='grid grid-cols-1 gap-6 mt-6'>
                     <button
+                    className={'bg-purple-700 text-white p-4 font-semibold rounded shadown mt-6'}
                     onClick={this.handleClick}
                     >
                         {a}
                     </button>
+                </div>
                 )}
             </div>
         )

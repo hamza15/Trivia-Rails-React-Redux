@@ -60,7 +60,6 @@ class CategoryListItem extends Component {
       <h1 className='text-3xl text-white font-bold'> Your score was {this.state.score} </h1>
     ) : quest_list.length > 0 ? (
         <div>
-            <p>{this.props.selected_category}</p>
             <div className='container'>
               <Questionaire data={quest_list[this.state.index]} handleNextQuestion={this.handleNextQuestion} handleAnswer={this.handleAnswer} showAnswers={this.state.showAnswers} />
 
