@@ -21,8 +21,7 @@ class CategoryListItem extends Component {
   }
 
   handleAnswer = (answer) => {
-    
-    
+
     if(!this.state.showAnswers) {
       let quest_list = this.props.selected_questions
       if (answer === quest_list[this.state.index].answer) {
@@ -36,8 +35,6 @@ class CategoryListItem extends Component {
     this.setState({
       showAnswers: true
     })
-
-    
   };
 
   handleNextQuestion = () => {
@@ -52,12 +49,19 @@ class CategoryListItem extends Component {
     })
     
   }
+
+  handleReplay = () => {
+    this.props.history.push(`/user/home`)
+  }
   
 
   render() {
     const quest_list = this.props.selected_questions
     return  this.state.index >= quest_list.length ? (
-      <h1 className='text-3xl text-white font-bold'> Your score was {this.state.score} </h1>
+      <div>
+        <h1 className='text-3xl text-white font-bold'> Your score was {this.state.score} </h1>
+        <button className={'bg-purple-700 text-white p-4 font-semibold rounded shadown mt-6'} onClick={this.handleReplay}>play again</button>
+      </div>
     ) : quest_list.length > 0 ? (
         <div>
             <div className='container'>
@@ -79,4 +83,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getQuestions, selectedQuestions })(CategoryListItem)
+export default connect(mapStateToProps, { getQuestions, selectedQuestions})(CategoryListItem)

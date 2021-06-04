@@ -1,4 +1,4 @@
-const userReducer =  (state = [], action) => {
+const categoryReducer =  (state = [], action) => {
     switch (action.type) {
         case 'FETCH_CATEGORIES':
             return action.payload;
@@ -7,4 +7,4 @@ const userReducer =  (state = [], action) => {
     }
 }
 
-export default userReducer;
+export default categoryReducer;
